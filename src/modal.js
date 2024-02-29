@@ -1,19 +1,19 @@
 //Базовое открытие попапа
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add("popup_is-opened");
   document.addEventListener("mousedown", setOverlayListener);
   document.addEventListener("keydown", setEscListener);
 }
 
 // Открытие окна редактирования профиля
-function openEditPopup() {
+export function openEditPopup() {
   openPopup(popupEditProfile);
   nameInput.value = profileName.textContent;
   jobInput.value = profileText.textContent;
 }
 
 // Открытие попапа фото карточки
-function openPopupImg(card) {
+export function openPopupImg(card) {
   card.querySelector(".card__image").addEventListener("click", function (evt) {
     openPopup(popupFigure);
     const caption = evt.target
@@ -26,12 +26,12 @@ function openPopupImg(card) {
 }
 
 //закрытие попап базовое
-function closePopup(popup) {
+export function closePopup(popup) {
   popup.classList.remove("popup_is-opened");
 }
 
 // Функция закрытия попап по оверлею
-const setOverlayListener = function (evt) {
+export const setOverlayListener = function (evt) {
   const openedPopup = document.querySelector(".popup_is-opened");
   if (evt.target === openedPopup) {
     closePopup(openedPopup);
@@ -39,7 +39,7 @@ const setOverlayListener = function (evt) {
 };
 
 // Функция закрытия попап по кнопке Escape
-const setEscListener = function (evt) {
+export const setEscListener = function (evt) {
   if (evt.key === "Escape") {
     const openedPopup = document.querySelector(".popup_is-opened");
     closePopup(openedPopup);

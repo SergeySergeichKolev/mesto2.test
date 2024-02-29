@@ -1,4 +1,18 @@
 import "../pages/index.css"; // добавьте импорт главного файла стилей
+import {
+  initialCards,
+  deleteCard,
+  createCard,
+  handleLikeButton,
+} from "./cards";
+import {
+  openPopup,
+  openEditPopup,
+  openPopupImg,
+  closePopup,
+  setOverlayListener,
+  setEscListener,
+} from "./modal";
 
 const popupEditButton = document.querySelector(".profile__edit-button"); //кнопка открытия попапа изменения профиля
 const popupEditCloseButton = document.querySelector("#edit-profile-close"); //кнопка закрытия попапа редактирования профиля

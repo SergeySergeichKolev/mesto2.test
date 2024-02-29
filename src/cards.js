@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: "Свити Фокс",
     link: "https://sun6-22.userapi.com/impg/fkfARVKCembSv79qM7qOHB_Vw68GAfprgLboMw/9Q1MoZ948gg.jpg?size=604x404&quality=95&sign=8d40493e0f7fd9e4d75301039b8e1f4a&type=album",
@@ -26,7 +26,13 @@ const initialCards = [
 ];
 
 //создание карточки
-function createCard(link, name, deleteCard, handleLikeButton, openPopupImg) {
+export function createCard(
+  link,
+  name,
+  deleteCard,
+  handleLikeButton,
+  openPopupImg
+) {
   const card = template.querySelector(".card").cloneNode(true);
   card.querySelector(".card__image").src = link;
   card.querySelector(".card__image").alt = name;
@@ -34,7 +40,9 @@ function createCard(link, name, deleteCard, handleLikeButton, openPopupImg) {
 
   card
     .querySelector(".card__like-button")
-    .addEventListener("click", handleLikeButton);
+    .addEventListener("click", function (evt) {
+      handleLikeButton(evt);
+    });
 
   deleteCard(card);
   openPopupImg(card);
@@ -43,7 +51,7 @@ function createCard(link, name, deleteCard, handleLikeButton, openPopupImg) {
 
 //Удаления карточек
 
-function deleteCard(card) {
+export function deleteCard(card) {
   card
     .querySelector(".card__delete-button")
     .addEventListener("click", function (evt) {
@@ -52,10 +60,6 @@ function deleteCard(card) {
 }
 
 // Лайка на карточках
-function handleLikeButton(card) {
-  card
-    .querySelector(".card__like-button")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("card__like-button_is-active");
-    });
+export function handleLikeButton(evt) {
+  evt.target.classList.toggle("card__like-button_is-active");
 }
